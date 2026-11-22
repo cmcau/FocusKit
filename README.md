@@ -1,5 +1,7 @@
 # FocusKit
 
+![FocusKit spotlighting one bar on a sales dashboard, with a hand-drawn circle around it and a zoom lens over a line chart](docs/hero.jpg)
+
 A tiny Windows tray app that helps your audience see exactly what you're talking about. Press a hotkey to **spotlight** the area around your mouse, **zoom** into the screen, or **draw** on it.
 
 It's built for anyone who shows their screen to other people: presenting in a meeting room, screen-sharing on Teams or Zoom, running training sessions, recording tutorials, or walking a colleague through a dashboard. On a big screen, or a shared screen shrunk into a video call, small details get lost and the mouse pointer is hard to follow. FocusKit lets you:
