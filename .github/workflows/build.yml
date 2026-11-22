@@ -40,9 +40,11 @@ jobs:
           New-Item -ItemType Directory dist | Out-Null
           Copy-Item FocusKit.exe dist/
           Compress-Archive -Path FocusKit.exe, README.md, LICENSE -DestinationPath "dist/FocusKit-$env:TAG.zip"
-          Get-ChildItem dist -File | ForEach-Object {
+          # LF line endings so `sha256sum -c SHA256SUMS.txt` also works on Linux/macOS
+          $sums = Get-ChildItem dist -File | ForEach-Object {
             "{0}  {1}" -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(), $_.Name
-          } | Set-Content dist/SHA256SUMS.txt -Encoding ascii
+          }
+          [IO.File]::WriteAllText("$PWD/dist/SHA256SUMS.txt", ($sums -join "`n") + "`n")
           Get-Content dist/SHA256SUMS.txt
 
       - uses: actions/upload-artifact@v7
