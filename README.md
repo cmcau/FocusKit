@@ -21,6 +21,10 @@ All three work over any app and appear instantly from a hotkey, so you don't bre
 
 Get `FocusKit.exe` from the [latest release](../../releases/latest) and run it. A yellow-dot icon appears in the system tray.
 
+If your email or network blocks `.exe` downloads, grab `FocusKit-vX.Y.Z.zip` from the same release instead. It contains the exe, this README and the licence.
+
+Release files are built from this source code by [GitHub Actions](.github/workflows/build.yml), not on anyone's PC. Each release includes `SHA256SUMS.txt`, so you can confirm your download matches. In PowerShell: `Get-FileHash .\FocusKit.exe`.
+
 > **Windows SmartScreen:** the exe isn't code-signed, so the first time you run it Windows may say *"Windows protected your PC"*. Click **More info → Run anyway**. If you'd rather not trust a downloaded binary, [build it yourself](#building-from-source) from the source in this repo. It takes a few seconds.
 
 ## Default hotkeys
@@ -82,6 +86,17 @@ build.cmd
 ```
 
 This produces `FocusKit.exe` in the same folder. The whole app is a single file, [`FocusKit.cs`](FocusKit.cs) (C# 5, WinForms + a little Win32).
+
+### Making a release
+
+Push a version tag and GitHub Actions builds and publishes the release (exe, zip and checksums):
+
+```bat
+git tag v1.1.0
+git push origin v1.1.0
+```
+
+Every push to `main` is also built, so you can see straight away if something stops compiling.
 
 ## Files it writes
 
