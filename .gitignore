@@ -2,3 +2,6 @@
 *.exe
 *.pdb
 *.obj
+
+# Marketing material (social posts, images) - kept locally only
+social/
