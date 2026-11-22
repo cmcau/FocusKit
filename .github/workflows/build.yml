@@ -1,4 +1,4 @@
-name: Build
+﻿name: Build
 
 # - Every push / pull request: compile FocusKit.exe and keep it as a downloadable build artifact.
 # - Pushing a version tag (e.g. v1.1.0): build, then publish a GitHub Release with the exe,
@@ -26,7 +26,7 @@ jobs:
       TAG: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
       IS_RELEASE: ${{ github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v') }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
 
@@ -45,7 +45,7 @@ jobs:
           } | Set-Content dist/SHA256SUMS.txt -Encoding ascii
           Get-Content dist/SHA256SUMS.txt
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: FocusKit-${{ env.TAG }}
           path: dist/
