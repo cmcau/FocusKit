@@ -1,0 +1,4 @@
+# Build output - the exe is published as a GitHub Release instead
+*.exe
+*.pdb
+*.obj
